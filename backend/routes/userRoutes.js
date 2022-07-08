@@ -6,12 +6,11 @@ const User = require('../models/user');
 //middlewares
 
 const verifyToken = require('../helpers/check-token');
-const { get } = require('mongoose');
+
 
 // helpers
 const getUserByToken = require('../helpers/get-user-by-token');
-const { response } = require('express');
-const { update } = require('../models/user');
+
 
 //get an user
 
@@ -31,7 +30,7 @@ router.get('/:id', verifyToken, async (req, res) => {
 });
 
 //update an user
-router.put('/', verifyToken, async (req, res) =>{
+router.patch('/', verifyToken, async (req, res) =>{
 
     const token = req.header("auth-token");
     const user = await getUserByToken(token);

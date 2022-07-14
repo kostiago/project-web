@@ -16,7 +16,7 @@ const verifyToken = require('../helpers/check-token');
 const getUserByToken = require('../helpers/get-user-by-token');
 
 //create a new Event
-router.post('/', verifyToken, upload.fields([{name: 'photos'}]), async (req, res) => {
+router.post('/', verifyToken, upload.fields([{name: "photos"}]), async (req, res) => {
 
     // requisition data
     const title = req.body.title;
@@ -30,7 +30,7 @@ router.post('/', verifyToken, upload.fields([{name: 'photos'}]), async (req, res
     }
 
     //validations
-    if(title == 'null' || description == 'null' || eventDate == 'null') {
+    if(title == "null" || description == "null" || eventDate == "null") {
         return res.status(400).json({error: "Campos Obrigatorios: nome, descrição e data."});
     }
 
@@ -41,7 +41,7 @@ router.post('/', verifyToken, upload.fields([{name: 'photos'}]), async (req, res
     
     try{
 
-        const user = await User.findOne({_id: userId});
+        const user = await User.findOne({  _id: userId});
 
         //  create photos array with image path
         let photos = [];
@@ -90,7 +90,7 @@ router.get('/all', async (req, res) => {
 });
 
 // get all user events 
-router.get('/userEvents', verifyToken, async (req, res) => {
+router.get('/userevents', verifyToken, async (req, res) => {
     try {
         const token = req.header("auth-token");
         const user = await getUserByToken(token);
@@ -105,7 +105,7 @@ router.get('/userEvents', verifyToken, async (req, res) => {
 });
 
 // get user Event
-router.get('/userEvents/:id', verifyToken, async (req, res) => {
+router.get('/userevent/:id', verifyToken, async (req, res) => {
     try {
 
         const token = req.header("auth-token");

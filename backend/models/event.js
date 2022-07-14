@@ -8,7 +8,7 @@ const eventShema = new mongoose.Schema({
     description: {
         type: String,
     },
-    date: {
+    eventDate: {
         type: Date,
     },
     photos: {
